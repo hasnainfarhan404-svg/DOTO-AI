@@ -1,4 +1,5 @@
 import tkinter as tk
+import streamlit as st
 import random
 
 
