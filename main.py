@@ -27,10 +27,10 @@ llm_model = OpenAIChatCompletionsModel(
     openai_client=external_client
 )
 
-# Initialize Agent
+# Initialize Agent (Instructions updated for name DOTO AI)
 agent = Agent(
-    name="MyAgent",
-    instructions="You are a helpful, friendly, and concise AI assistant.",
+    name="DOTO AI",
+    instructions="Your name is DOTO AI. Always introduce yourself as DOTO AI when asked about your name or who you are. You are a helpful, friendly, and concise AI assistant.",
     model=llm_model
 )
 
