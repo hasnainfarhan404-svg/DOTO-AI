@@ -15,7 +15,7 @@ st.set_page_config(page_title="DOTO AI", page_icon="🤖", layout="centered")
 st.title("🤖 DOTO AI")
 st.caption("Powered by OpenAI Agents SDK and OpenRouter")
 
-# Get API Key safely from Streamlit Secrets (for Cloud) or .env (for Local)
+# Get API Key safely from Streamlit Secrets (Cloud) or .env (Local)
 api_key = st.secrets.get("OPEN_ROUTER_API_KEY") or os.getenv("OPEN_ROUTER_API_KEY")
 
 if not api_key:
