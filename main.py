@@ -15,9 +15,16 @@ st.set_page_config(page_title="DOTO AI", page_icon="🤖", layout="centered")
 st.title("🤖 DOTO AI")
 st.caption("Powered by OpenAI Agents SDK and OpenRouter")
 
+# Get API Key safely from Streamlit Secrets (for Cloud) or .env (for Local)
+api_key = st.secrets.get("OPEN_ROUTER_API_KEY") or os.getenv("OPEN_ROUTER_API_KEY")
+
+if not api_key:
+    st.error("⚠️ OPEN_ROUTER_API_KEY nahi mili! Streamlit Cloud Secrets ya local .env file check karein.")
+    st.stop()
+
 # Initialize External OpenAI Client (OpenRouter)
 external_client = AsyncOpenAI(
-    api_key=os.getenv("OPEN_ROUTER_API_KEY"),
+    api_key=api_key,
     base_url="https://openrouter.ai/api/v1"
 )
 
@@ -27,7 +34,7 @@ llm_model = OpenAIChatCompletionsModel(
     openai_client=external_client
 )
 
-# Initialize Agent (Instructions updated for name DOTO AI)
+# Initialize Agent
 agent = Agent(
     name="DOTO AI",
     instructions="Your name is DOTO AI. Always introduce yourself as DOTO AI when asked about your name or who you are. You are a helpful, friendly, and concise AI assistant.",
